@@ -1,0 +1,58 @@
+# ⚠️  BROKEN BY DESIGN — Exercise 01: Missing SAST
+#
+# This pipeline runs lint, type-check, and tests. All pass.
+# There is no SAST step. A CWE-22 path traversal written by Claude
+# will slip through every check undetected.
+#
+# Fix: add the semgrep-action step after Tests and make it a required check.
+
+name: Exercise 01 — CI (no SAST)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'exercise-01-missing-sast/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'exercise-01-missing-sast/**'
+
+defaults:
+  run:
+    working-directory: exercise-01-missing-sast
+
+jobs:
+  ci:
+    name: Lint · Typecheck · Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: exercise-01-missing-sast/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Tests
+        run: npm test
+
+      # ⚠️  MISSING: SAST step should be here.
+      # Without it, CWE-22 / CWE-89 / CWE-79 will never be caught.
+      #
+      # - name: SAST Scan
+      #   uses: semgrep/semgrep-action@v1
+      #   with:
+      #     config: p/security-audit

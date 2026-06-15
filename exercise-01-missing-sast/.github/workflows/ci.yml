@@ -1,0 +1,39 @@
+# BROKEN SETUP: This CI pipeline is missing SAST scanning.
+# Lint, type-check, and tests all pass — but a security vulnerability
+# will slip through undetected.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Tests
+        run: npm test
+
+      # ⚠️  MISSING: SAST step should be here
+      # Without it, CWE-22 / CWE-89 / CWE-79 will never be caught.
+      # Add the semgrep-action step and make it a required check.

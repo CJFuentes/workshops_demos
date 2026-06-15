@@ -1,0 +1,5 @@
+2024-01-15 10:23:44 INFO  Server started on port 3000
+2024-01-15 10:24:01 INFO  GET /uploads/user-1234-avatar.txt 200 12ms
+2024-01-15 10:24:55 WARN  Rate limit approaching for IP 192.168.1.100
+2024-01-15 10:25:33 ERROR Database connection timeout — retrying
+2024-01-15 10:25:35 INFO  Database connection restored

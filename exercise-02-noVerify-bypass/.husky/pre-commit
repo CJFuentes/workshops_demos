@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run linting and formatting on staged files only
+npx lint-staged
+
+# Scan for hardcoded secrets — exits 1 if any found
+npx gitleaks protect --staged --no-banner

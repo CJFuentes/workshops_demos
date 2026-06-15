@@ -1,0 +1,9 @@
+{
+  "name": "exercise-03-no-claudemd",
+  "version": "1.0.0",
+  "description": "Workshop exercise — no CLAUDE.md boundaries",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"No tests yet\""
+  }
+}

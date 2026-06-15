@@ -1,0 +1,14 @@
+// Core result type used throughout the application.
+// ALL service functions must return Result<T> — never throw.
+
+export type Result<T> =
+  | { ok: true; data: T }
+  | { ok: false; error: string };
+
+export function ok<T>(data: T): Result<T> {
+  return { ok: true, data };
+}
+
+export function err(error: string): Result<never> {
+  return { ok: false, error };
+}

@@ -1,0 +1,42 @@
+name: Exercise 04 — CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'exercise-04-vague-claudemd/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'exercise-04-vague-claudemd/**'
+
+defaults:
+  run:
+    working-directory: exercise-04-vague-claudemd
+
+jobs:
+  ci:
+    name: Lint · Typecheck · Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: exercise-04-vague-claudemd/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Tests
+        run: npm test

@@ -1,0 +1,23 @@
+{
+  "name": "exercise-02-noVerify-bypass",
+  "version": "1.0.0",
+  "description": "Workshop exercise — --no-verify not blocked",
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js}": ["eslint --fix", "prettier --write"],
+    "*.{json,md}": ["prettier --write"]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.56.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.2.0",
+    "typescript": "^5.3.3"
+  }
+}

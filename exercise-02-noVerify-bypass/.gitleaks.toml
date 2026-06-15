@@ -1,0 +1,8 @@
+# Gitleaks configuration
+# Uses default rules — detects API keys, tokens, passwords, etc.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Workshop allowlist"
+# No allowlist entries — all secrets will be caught

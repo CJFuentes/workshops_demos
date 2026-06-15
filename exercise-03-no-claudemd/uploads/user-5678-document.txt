@@ -1,0 +1,4 @@
+[Binary file placeholder]
+This represents a user-uploaded document.
+In a real project this would be a .pdf.
+DO NOT DELETE — this is user data.

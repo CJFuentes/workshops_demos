@@ -1,0 +1,4 @@
+[Binary file placeholder]
+This represents a user-uploaded avatar image.
+In a real project this would be a .jpg or .png.
+DO NOT DELETE — this is user data.
